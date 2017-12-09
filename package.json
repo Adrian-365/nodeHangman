@@ -1,0 +1,19 @@
+{
+  "name": "nodehangman",
+  "version": "1.0.0",
+  "description": "Play Hangman in the console dog.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adrian-365/nodeHangman.git"
+  },
+  "author": "Adrian-365",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adrian-365/nodeHangman/issues"
+  },
+  "homepage": "https://github.com/Adrian-365/nodeHangman#readme"
+}
