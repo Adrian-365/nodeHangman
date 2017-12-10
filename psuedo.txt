@@ -1,0 +1,52 @@
+var remaining = 10;
+var wordList = [an array of words]
+
+Word
+this.currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);.
+this.splitWord = currentWord.split(‘’);
+(Split) the selected word into an [array of individual letters and spaces].
+
+Letter
+Constructor of letter objects.  Pass (letters) into it.  The will have the following properties:
+{
+this.lett = ‘’; 
+this.guessed =  false;
+this.hidden = ‘_ ’;
+this.revealed = this.lett + ’ ’;
+}
+
+Get the array of individual letters and spaces.
+Loop throug the array
+For each item of the array, pass these into the Letter Constructor.  Create an [array of {Letter objects}].
+If the item in the array is a space between words, then set the object property of guessed = true.
+
+(Start)
+(Display) the array of Letter objects onto the screen.  
+If the guessed property = false, then display “_ “
+If the guessed property = true, then display the let variable.
+
+(Prompt) the user to ’Guess a letter!’ using inqurirer.
+
+ 
+(Check) the answer agianst the array of letter objects.  
+Loop through the array of letter objects.   
+If the guess = the letter property of any of the letter objects, then 
+set the guessed property of that object/those objects to = true
+(Display) the array of Letter objects onto the screen.  
+If the guessed property = false, then display this.hidden
+If the guessed property = true, then display this.revealed
+	Console.log(‘CORRECT!!!’) – in green font?
+	(Prompt) the user to ’Guess a letter!’ using inqurirer
+
+If the guess does not equal any of the letters, then 
+reduce the number of guesses by 1.
+If the number of guesses remaining = 0, then 
+			Display “You lost. Next word!”
+			(Start) over.
+		Else 
+		(Display) the array of Letter objects onto the screen.  
+If the guessed property = false, then display “_ “
+If the guessed property = true, then display the let variable.
+			Console.log(‘INCORRECT!!!’) – in red font?
+			Console.log(remaining + ‘ guesses remaining!!!’);
+			(Prompt) the user to ’Guess a letter!’ using inqurirer
