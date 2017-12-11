@@ -1,1 +1,0 @@
-'black sabbath', 'deep purple', 'kiss', 'ted nugent', 'judas priest', 'ruch', 'rainbow', 'van halen', 'scorpions', 'motorhead'
