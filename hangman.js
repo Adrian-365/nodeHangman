@@ -17,16 +17,17 @@ function Hangman() {
             displayArray.push(this.arrayOfObjects[i].revealed);
         }
     };
+    console.log('Console logging from the hangman.js below:')
     console.log(currentWord);
-    // inquirer.prompt([{
-    //     name: "guess",
-    //     message: "Guess a letter then hit Enter!"
-    // }]).then(function(answer) {
+    inquirer.prompt([{
+        name: "guess",
+        message: "Guess a letter then hit Enter!"
+    }]).then(function(answer) {
 
-    //         console.log(answer);
-    //     }
+            console.log(answer);
+        }
 
-    // )
+    )
 };
 
 // calling the game function

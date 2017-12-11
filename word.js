@@ -2,7 +2,7 @@ var Letter = require('./letter.js');
 //an array of all hangman words - 70's rock bands
 var wordList = ['black sabbath', 'deep purple', 'kiss', 'ted nugent', 'judas priest', 'rush', 'rainbow', 'van halen', 'scorpions', 'motorhead', 'the who', 'aerosmith', 'thin lizzy', 'bad company', 'the rolling stones', 'pink floyd', 'jethro tull', 'zz top', 'foreigner', 'heart', 'slade', 'cheap trick', 'santana'];
 // Word: a constructor used to create an object representing the current word the user is attempting to guess. This should contain word specific logic and data.
-var arrayOfObjects = []
+// var arrayOfObjects = [];
 var Word = function() {
     // selects at random from the array of words
     this.currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);
@@ -21,6 +21,7 @@ var Word = function() {
                 this.arrayOfObjects.push(new Letter(letter, false));
             }
         })
+        console.log("THE ARRAY OF LETTER OBJECTS from the Word constructor:")
         console.log(this.arrayOfObjects);
     }
 
