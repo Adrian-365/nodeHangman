@@ -10,27 +10,37 @@ var remaining = 10;
 function Hangman() {
     var displayArray = [];
     var currentWord = new Word();
-    for (i = 0; i < currentWord.arrayOfObjects.length; i++) {
-        if (currentWord.arrayOfObjects[i].guessed === false) {
-            displayArray.push(currentWord.arrayOfObjects[i].revealed);
-        } else if (this.arrayOfObjects[i].guessed === true) {
-            displayArray.push(this.arrayOfObjects[i].revealed);
-        }
+    console.log('Console logging arrayofobjects from the hangman.js below:');
+    console.log(currentWord.arrayOfObjects);
+
+    function displayWord() {
+        for (i = 0; i < currentWord.arrayOfObjects.length; i++) {
+            if (currentWord.arrayOfObjects[i].guessed === false) {
+                displayArray.push(currentWord.arrayOfObjects[i].hidden);
+            } else if (this.arrayOfObjects[i].guessed === true) {
+                displayArray.push(this.arrayOfObjects[i].revealed);
+            }
+        };
+        console.log("Console logging the displayArray from the hangman.js below:")
+        console.log(displayArray);
+
     };
-    console.log('Console logging from the hangman.js below:')
-    console.log(currentWord);
+    displayWord();
+
+
     inquirer.prompt([{
-        name: "guess",
-        message: "Guess a letter then hit Enter!"
-    }]).then(function(answer) {
-
-            console.log(answer);
-        }
-
-    )
+            name: "guess",
+            message: "Guess a letter then hit Enter!"
+        }]).then(function(answer) {
+            console.log(answer.guess);
+            currentWord.arrayOfObjects.forEach(function(answer) {
+                if (answer.guess === lett) {
+                    guessed === true;
+                }
+            });
+        })
+        // .then
 };
 
 // calling the game function
 Hangman();
-
-// module.exports = Hangman;
