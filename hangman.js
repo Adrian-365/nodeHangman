@@ -13,13 +13,14 @@ function Hangman() {
     // selects a word at random from the array of words
     let currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);
     var wordInPlay = new Word(currentWord);
-    console.log(currentWord);
+    console.log('\n** 70\'s Rock Bands Hangman! **');
+    // console.log(currentWord);
     //an array to hold the _ and letters of the word
     var displayArray = [];
     //a function to display the word to the console
     function displayWord() {
         displayArray = [];
-        for (i = 0; i < wordInPlay.primeArray.length; i++) {
+        for (let i = 0; i < wordInPlay.primeArray.length; i++) {
             if (wordInPlay.primeArray[i].guessed === false) {
                 displayArray.push(wordInPlay.primeArray[i].hidden);
             } else if (wordInPlay.primeArray[i].guessed === true) {
@@ -55,14 +56,24 @@ function Hangman() {
                 //if the guess was correct, log CORRECT.  
                 if (wordInPlay.correctGuess === true) {
                     console.log("\x1b[32m", 'CORRECT!!!\n', "\x1b[0m");
-                    makeGuess();
+                    //---------Check if the word has been guessed----------------------------------------------------
+
+
+
+
+                    //------------------------------------------------------------------------------------------------
                 } else {
                     // If the guess was not correct, log INCORRECT and reduce the remaining and display the remaining.
                     console.log("\x1b[31m", 'INCORRECT!!!\n', "\x1b[0m");
                     wordInPlay.remaining--;
                     console.log(wordInPlay.remaining + ' guesses remaining!!\n');
-                    makeGuess();
+                    //---------Check if any guesses remain-------------------------------------------------------
+
+
+
+                    //-------------------------------------------------------------------------------------------
                 }
+                makeGuess();
             })
 
     }
