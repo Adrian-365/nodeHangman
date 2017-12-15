@@ -13,10 +13,12 @@ function Hangman() {
     // selects a word at random from the array of words
     let currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);
     var wordInPlay = new Word(currentWord);
+    console.log(currentWord);
     //an array to hold the _ and letters of the word
     var displayArray = [];
-    //a function to display the word
+    //a function to display the word to the console
     function displayWord() {
+        displayArray = [];
         for (i = 0; i < wordInPlay.primeArray.length; i++) {
             if (wordInPlay.primeArray[i].guessed === false) {
                 displayArray.push(wordInPlay.primeArray[i].hidden);
@@ -24,25 +26,35 @@ function Hangman() {
                 displayArray.push(wordInPlay.primeArray[i].revealed);
             }
         };
-        console.log("The displayArray from hangman.js:")
-        console.log(displayArray);
-
+        // console.log the array using .join('') to concatonate the elements of the array
+        console.log('\n' + displayArray.join('') + '\n');
     };
+    // call the function
     displayWord();
-
-
+    // inquire the user to maek a guess
     inquirer.prompt([{
             name: "guess",
             message: "Guess a letter then hit Enter!"
         }])
-        // .then(function(answer) {
-        //     console.log(answer.guess);
-        //     wordInPlay.arrayOfObjects.forEach(function(answer) {
-        //         if (answer.guess === lett) {
-        //             guessed === true;
-        //         }
-        //     });
-        // })
+        .then(function(answer) {
+            //set the correctGuess back to false if had been previously true
+            wordInPlay.correctGuess === false;
+            //compare the guess to the letters in the array            
+            for (i = 0; i < wordInPlay.primeArray.length; i++) {
+                if (answer.guess.trim().toLowerCase() === wordInPlay.primeArray[i].lett) {
+                    wordInPlay.primeArray[i].guessed = true;
+                    wordInPlay.correctGuess = true;
+                }
+            }
+            displayWord();
+            if (wordInPlay.correctGuess === true) {
+                console.log('CORRECT!!!\n');
+            } else {
+                console.log('INCORRECT!!!\n');
+                wordInPlay.remaining--;
+                console.log(wordInPlay.remaining + ' guesses remaining!!\n')
+            }
+        })
 
 };
 
