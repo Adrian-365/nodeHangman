@@ -3,11 +3,6 @@ var Word = require('./word.js')
     //an array of all hangman words - 70's rock bands
 var wordList = ['black sabbath', 'deep purple', 'kiss', 'ted nugent', 'judas priest', 'rush', 'rainbow', 'van halen', 'scorpions', 'motorhead', 'the who', 'aerosmith', 'thin lizzy', 'bad company', 'the rolling stones', 'pink floyd', 'jethro tull', 'zz top', 'foreigner', 'heart', 'slade', 'cheap trick', 'santana', 'nazareth', 'lynyrd skynyrd', 'styx', 'kansas'];
 
-// console.log('The wordInPlay from hangman.js:');
-// console.log(wordInPlay);
-// console.log('The primeArray from hangman.js:');
-// console.log(wordInPlay.primeArray);
-
 // A function to start the game
 function Hangman() {
     // selects a word at random from the array of words
@@ -31,7 +26,7 @@ function Hangman() {
         console.log('\n' + displayArray.join('') + '\n');
     };
 
-
+    //a function for making guesses.
     function makeGuess() {
         // inquire the user to maek a guess
         inquirer.prompt([{
@@ -56,13 +51,17 @@ function Hangman() {
                 //if the guess was correct, log CORRECT.  
                 if (wordInPlay.correctGuess === true) {
                     console.log("\x1b[32m", 'CORRECT!!!\n', "\x1b[0m");
-                    //---------Check if the word has been guessed----------------------------------------------------
-                    //if word has been guessed, then console.log("\x1b[32m", 'WORD SOLVED!!! Next word:\n', "\x1b[0m"), then start over by calling Hangman().
-                    //if the word has not been guessed, then call the makeGuess() function.
-
-
-
-                    //------------------------------------------------------------------------------------------------
+                    //---------Check if the word has been guessed ----------------------------------------------------
+                    //if word has not been solved, then... 
+                    if (displayArray.includes('_ ')) {
+                        //do nothing and exit to the makeGuess()
+                    } else
+                    //otherwise, the word HAS been solved, so it's time to start over:
+                    {
+                        console.log("\x1b[36m", 'WORD SOLVED!!! Next word:\n', "\x1b[0m");
+                        Hangman();
+                        return;
+                    }
                 } else {
                     // If the guess was not correct, log INCORRECT and reduce the remaining and display the remaining.
                     console.log("\x1b[31m", 'INCORRECT!!!\n', "\x1b[0m");
@@ -77,15 +76,12 @@ function Hangman() {
                 }
 
                 makeGuess();
-            })
+            });
 
-    }
+    };
     // call the function
     displayWord();
     makeGuess();
-
 };
-
-
 // calling the game function
 Hangman();
