@@ -7,7 +7,7 @@ var Word = function(currentWord) {
     // a variable of guesses remaining
     this.remaining = 10;
     //a boolean to track whether or not a correct guess was made
-    this.guessCorrect = false;
+    this.correctGuess = false;
     //a boolean to track if the entire word has been guessed
     this.wordSolved = false;
     // (Split) the selected word into an [array of individual letters and spaces].
