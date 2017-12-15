@@ -29,32 +29,46 @@ function Hangman() {
         // console.log the array using .join('') to concatonate the elements of the array
         console.log('\n' + displayArray.join('') + '\n');
     };
+
+
+    function makeGuess() {
+        // inquire the user to maek a guess
+        inquirer.prompt([{
+                name: "guess",
+                message: "Guess a letter then hit Enter!"
+            }])
+            .then(function(answer) {
+                //set the correctGuess back to false if had been previously true
+                wordInPlay.correctGuess = false;
+                //compare the guess to the letters in the array            
+                for (i = 0; i < wordInPlay.primeArray.length; i++) {
+                    //if the guess equals the lett property of one or more of the object in the array, then
+                    if (answer.guess.trim().toLowerCase() === wordInPlay.primeArray[i].lett) {
+                        //set the value of the guessed property for that Letter object to true so that the letter will display to the terminal, and
+                        wordInPlay.primeArray[i].guessed = true;
+                        //set the correctGuess property to true so the 'CORRECT!!' will be diplayed to the terminal and we can check if the word has been solved
+                        wordInPlay.correctGuess = true;
+                    }
+                }
+                //display the word again, with any newly guessed letters added to the display
+                displayWord();
+                //if the guess was correct, log CORRECT.  
+                if (wordInPlay.correctGuess === true) {
+                    console.log('CORRECT!!!\n');
+                    makeGuess();
+                } else {
+                    // If the guess was not correct, log INCORRECT and reduce the remaining and display the remaining.
+                    console.log('INCORRECT!!!\n');
+                    wordInPlay.remaining--;
+                    console.log(wordInPlay.remaining + ' guesses remaining!!\n');
+                    makeGuess();
+                }
+            })
+
+    }
     // call the function
     displayWord();
-    // inquire the user to maek a guess
-    inquirer.prompt([{
-            name: "guess",
-            message: "Guess a letter then hit Enter!"
-        }])
-        .then(function(answer) {
-            //set the correctGuess back to false if had been previously true
-            wordInPlay.correctGuess === false;
-            //compare the guess to the letters in the array            
-            for (i = 0; i < wordInPlay.primeArray.length; i++) {
-                if (answer.guess.trim().toLowerCase() === wordInPlay.primeArray[i].lett) {
-                    wordInPlay.primeArray[i].guessed = true;
-                    wordInPlay.correctGuess = true;
-                }
-            }
-            displayWord();
-            if (wordInPlay.correctGuess === true) {
-                console.log('CORRECT!!!\n');
-            } else {
-                console.log('INCORRECT!!!\n');
-                wordInPlay.remaining--;
-                console.log(wordInPlay.remaining + ' guesses remaining!!\n')
-            }
-        })
+    makeGuess();
 
 };
 
