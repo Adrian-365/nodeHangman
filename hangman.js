@@ -1,7 +1,7 @@
 var inquirer = require('inquirer');
 var Word = require('./word.js')
     //an array of all hangman words - 70's rock bands
-var wordList = ['black sabbath', 'deep purple', 'kiss', 'ted nugent', 'judas priest', 'rush', 'rainbow', 'van halen', 'scorpions', 'motorhead', 'the who', 'aerosmith', 'thin lizzy', 'bad company', 'the rolling stones', 'pink floyd', 'jethro tull', 'zz top', 'foreigner', 'heart', 'slade', 'cheap trick', 'santana'];
+var wordList = ['black sabbath', 'deep purple', 'kiss', 'ted nugent', 'judas priest', 'rush', 'rainbow', 'van halen', 'scorpions', 'motorhead', 'the who', 'aerosmith', 'thin lizzy', 'bad company', 'the rolling stones', 'pink floyd', 'jethro tull', 'zz top', 'foreigner', 'heart', 'slade', 'cheap trick', 'santana', 'nazareth', 'lynyrd skynyrd', 'styx', 'kansas'];
 
 // console.log('The wordInPlay from hangman.js:');
 // console.log(wordInPlay);
@@ -13,7 +13,7 @@ function Hangman() {
     // selects a word at random from the array of words
     let currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);
     var wordInPlay = new Word(currentWord);
-    console.log('\n** 70\'s Rock Bands Hangman! **');
+    console.log('\n** 70\'s Rock-Bands Hangman! **');
     // console.log(currentWord);
     //an array to hold the _ and letters of the word
     var displayArray = [];
@@ -68,13 +68,14 @@ function Hangman() {
                     console.log("\x1b[31m", 'INCORRECT!!!\n', "\x1b[0m");
                     wordInPlay.remaining--;
                     console.log(wordInPlay.remaining + ' guesses remaining!!\n');
-                    //---------Check if any guesses remain-------------------------------------------------------
-                    //if remaining = 0, then console.log("\x1b[32m", 'EPIC FAIL!!! Next word:\n', "\x1b[0m"), then start over by calling Hangman().
-                    //if remaining > 0, then call the makeGuess() function.
-
-
-                    //-------------------------------------------------------------------------------------------
+                    //Check if any guesses remain:
+                    if (wordInPlay.remaining == 0) {
+                        console.log("\x1b[36m", 'EPIC FAIL!!! Next word:\n', "\x1b[0m");
+                        Hangman();
+                        return;
+                    }
                 }
+
                 makeGuess();
             })
 
