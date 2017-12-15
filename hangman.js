@@ -39,7 +39,7 @@ function Hangman() {
             }])
             .then(function(answer) {
                 //set the correctGuess back to false if had been previously true
-                wordInPlay.correctGuess === false;
+                wordInPlay.correctGuess = false;
                 //compare the guess to the letters in the array            
                 for (i = 0; i < wordInPlay.primeArray.length; i++) {
                     //if the guess equals the lett property of one or more of the object in the array, then
@@ -55,19 +55,14 @@ function Hangman() {
                 //if the guess was correct, log CORRECT.  
                 if (wordInPlay.correctGuess === true) {
                     console.log('CORRECT!!!\n');
+                    makeGuess();
                 } else {
                     // If the guess was not correct, log INCORRECT and reduce the remaining and display the remaining.
                     console.log('INCORRECT!!!\n');
                     wordInPlay.remaining--;
-                    console.log(wordInPlay.remaining + ' guesses remaining!!\n')
+                    console.log(wordInPlay.remaining + ' guesses remaining!!\n');
+                    makeGuess();
                 }
-
-                // if (wordInPlay.wordSolved === true) {
-                //     Hangman();
-                // } else if (wordInPlay.wordSolved === false) {
-                //     makeGuess();
-                // }
-
             })
 
     }
