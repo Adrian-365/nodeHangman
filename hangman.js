@@ -43,7 +43,7 @@ function Hangman() {
                 wordInPlay.correctGuess = false;
                 //compare the guess to the letters in the array            
                 for (i = 0; i < wordInPlay.primeArray.length; i++) {
-                    //if the guess equals the lett property of one or more of the object in the array, then
+                    //if the guess equals the 'lett' property of one or more of the Letter objects in the array, then...
                     if (answer.guess.trim().toLowerCase() === wordInPlay.primeArray[i].lett) {
                         //set the value of the guessed property for that Letter object to true so that the letter will display to the terminal, and
                         wordInPlay.primeArray[i].guessed = true;
@@ -57,7 +57,8 @@ function Hangman() {
                 if (wordInPlay.correctGuess === true) {
                     console.log("\x1b[32m", 'CORRECT!!!\n', "\x1b[0m");
                     //---------Check if the word has been guessed----------------------------------------------------
-
+                    //if word has been guessed, then console.log("\x1b[32m", 'WORD SOLVED!!! Next word:\n', "\x1b[0m"), then start over by calling Hangman().
+                    //if the word has not been guessed, then call the makeGuess() function.
 
 
 
@@ -68,7 +69,8 @@ function Hangman() {
                     wordInPlay.remaining--;
                     console.log(wordInPlay.remaining + ' guesses remaining!!\n');
                     //---------Check if any guesses remain-------------------------------------------------------
-
+                    //if remaining = 0, then console.log("\x1b[32m", 'EPIC FAIL!!! Next word:\n', "\x1b[0m"), then start over by calling Hangman().
+                    //if remaining > 0, then call the makeGuess() function.
 
 
                     //-------------------------------------------------------------------------------------------
