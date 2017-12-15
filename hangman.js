@@ -24,8 +24,8 @@ function Hangman() {
                 displayArray.push(wordInPlay.primeArray[i].revealed);
             }
         };
-        console.log("The displayArray from hangman.js:")
-        console.log(displayArray);
+        // console.log("The displayArray from hangman.js:")
+        console.log(displayArray.join(''));
 
     };
     displayWord();
