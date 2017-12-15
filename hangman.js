@@ -54,11 +54,11 @@ function Hangman() {
                 displayWord();
                 //if the guess was correct, log CORRECT.  
                 if (wordInPlay.correctGuess === true) {
-                    console.log('CORRECT!!!\n');
+                    console.log("\x1b[32m", 'CORRECT!!!\n', "\x1b[0m");
                     makeGuess();
                 } else {
                     // If the guess was not correct, log INCORRECT and reduce the remaining and display the remaining.
-                    console.log('INCORRECT!!!\n');
+                    console.log("\x1b[31m", 'INCORRECT!!!\n', "\x1b[0m");
                     wordInPlay.remaining--;
                     console.log(wordInPlay.remaining + ' guesses remaining!!\n');
                     makeGuess();
