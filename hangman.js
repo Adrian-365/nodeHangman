@@ -13,10 +13,12 @@ function Hangman() {
     // selects a word at random from the array of words
     let currentWord = (wordList[Math.floor(Math.random() * wordList.length)]);
     var wordInPlay = new Word(currentWord);
+    console.log(wordInPlay);
     //an array to hold the _ and letters of the word
     var displayArray = [];
-    //a function to display the word
+    //a function to display the word to the console
     function displayWord() {
+        displayArray = [];
         for (i = 0; i < wordInPlay.primeArray.length; i++) {
             if (wordInPlay.primeArray[i].guessed === false) {
                 displayArray.push(wordInPlay.primeArray[i].hidden);
@@ -24,25 +26,28 @@ function Hangman() {
                 displayArray.push(wordInPlay.primeArray[i].revealed);
             }
         };
-        // console.log("The displayArray from hangman.js:")
+        // console.log the array using .join('') to concatonate the elements of the array
+
         console.log(displayArray.join(''));
 
     };
+    // call the function
     displayWord();
-
-
+    // inquire the user to maek a guess
     inquirer.prompt([{
             name: "guess",
             message: "Guess a letter then hit Enter!"
         }])
-        // .then(function(answer) {
-        //     console.log(answer.guess);
-        //     wordInPlay.arrayOfObjects.forEach(function(answer) {
-        //         if (answer.guess === lett) {
-        //             guessed === true;
-        //         }
-        //     });
-        // })
+        .then(function(answer) {
+            console.log(answer.guess);
+            for (i = 0; i < wordInPlay.primeArray.length; i++) {
+                if (answer.guess === wordInPlay.primeArray[i].lett) {
+                    wordInPlay.primeArray[i].guessed = true;
+                }
+
+            }
+            displayWord();
+        })
 
 };
 
