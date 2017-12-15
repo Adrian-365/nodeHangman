@@ -27,7 +27,7 @@ function Hangman() {
             }
         };
         // console.log the array using .join('') to concatonate the elements of the array
-        console.log(displayArray.join(''));
+        console.log('\n' + displayArray.join('') + '\n');
     };
     // call the function
     displayWord();
@@ -48,9 +48,11 @@ function Hangman() {
             }
             displayWord();
             if (wordInPlay.correctGuess === true) {
-                console.log("CORRECT!!!");
+                console.log('CORRECT!!!\n');
             } else {
-                console.log('INCORRECT!!!');
+                console.log('INCORRECT!!!\n');
+                wordInPlay.remaining--;
+                console.log(wordInPlay.remaining + ' guesses remaining!!\n')
             }
         })
 
